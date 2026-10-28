@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>Empfehlungssiegel – __NAME__</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+@page { size: A4; margin: 0; }
+
+:root {
+  --brand: #BDE04F;
+  --brand-deep: #a6cf33;
+  --brand-dark: #5f7d12;
+  --brand-tint: #eef6d6;
+  --ink: #333333;
+  --ink-strong: #1f1f1f;
+  --muted: #565656;
+  --paper: #f5f6f0;
+  --paper-2: #ecede2;
+  --line: #e4e4dd;
+  --dark: #2e2e2e;
+  --dark-2: #1c1c1c;
+  --white: #ffffff;
+  --radius: 12px;
+  --radius-sm: 8px;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { height: 297mm; }
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background: var(--white);
+  color: var(--ink);
+  font-size: 14px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+h1, h2, h3 { font-family: "Space Grotesk", sans-serif; line-height: 1.1; letter-spacing: -0.01em; }
+
+/* ── HEADER ── */
+.hd {
+  background: var(--dark-2);
+  padding: 22px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.hd::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: 0;
+  width: 100%; height: 3px;
+  background: var(--brand);
+}
+.hd-eyebrow {
+  font-family: "Space Mono", monospace;
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--brand);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+.hd-eyebrow::before {
+  content: "";
+  width: 18px; height: 2.5px;
+  background: var(--brand-deep);
+  border-radius: 2px;
+  display: inline-block;
+}
+.hd h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 3px;
+}
+.hd-sub {
+  font-size: 12.5px;
+  color: #aaaaaa;
+}
+.hd-logo img {
+  height: 44px;
+  width: auto;
+  display: block;
+}
+
+/* ── INTRO CALLOUT ── */
+.intro {
+  background: linear-gradient(135deg, #c7e85f, #b0d840);
+  padding: 18px 40px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.intro::before {
+  content: "";
+  position: absolute; inset: 0;
+  opacity: .08;
+  background-image: linear-gradient(#1f1f1f 1px, transparent 1px),
+                    linear-gradient(90deg, #1f1f1f 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+.intro-icon {
+  flex: none;
+  width: 36px; height: 36px;
+  background: var(--ink-strong);
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.intro-icon svg { color: var(--brand); }
+.intro-text { position: relative; }
+.intro-text strong {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 14.5px;
+  color: var(--ink-strong);
+  display: block;
+  margin-bottom: 2px;
+}
+.intro-text p { font-size: 13px; color: var(--ink-strong); opacity: .85; }
+
+/* ── CONTENT GRID ── */
+.content {
+  padding: 24px 40px 16px;
+  display: grid;
+  grid-template-columns: 1fr 1.55fr;
+  gap: 24px;
+  align-items: stretch;
+  flex-shrink: 0;
+}
+
+/* ── PREVIEW CARD ── */
+.preview-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(40,40,40,.05), 0 8px 28px -16px rgba(40,40,40,.2);
+  display: flex;
+  flex-direction: column;
+}
+.preview-card-head {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.preview-card-head .tag {
+  font-family: "Space Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.preview-card-head .dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--brand);
+  box-shadow: 0 0 0 3px var(--brand-tint);
+}
+.preview-inner {
+  padding: 28px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(#fdfdfa, #f4f5ee);
+  flex: 1;
+}
+.preview-inner img { width: 160px; height: auto; display: block; }
+.preview-card-foot {
+  border-top: 1px solid var(--line);
+  padding: 10px 16px;
+  background: var(--paper);
+  flex-shrink: 0;
+}
+.preview-url {
+  font-family: "Space Mono", monospace;
+  font-size: 9px;
+  color: var(--muted);
+  word-break: break-all;
+  line-height: 1.5;
+}
+.preview-url strong {
+  display: block;
+  font-size: 9px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--brand-dark);
+  margin-bottom: 2px;
+}
+
+/* ── RIGHT COLUMN ── */
+.right {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.section-label {
+  font-family: "Space Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.section-label::before {
+  content: "";
+  width: 18px; height: 2.5px;
+  background: var(--brand-deep);
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.steps-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 8px;
+}
+.step-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--white);
+  flex: 1;
+}
+.step-num {
+  font-family: "Space Mono", monospace;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--ink-strong);
+  border: 1.5px solid var(--brand);
+  border-radius: 6px;
+  width: 34px; height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--brand-tint);
+  flex: none;
+}
+.step-body h3 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-strong);
+  margin-bottom: 1px;
+}
+.step-body p {
+  font-size: 11.5px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+/* ── CODE SECTION ── */
+.code-section {
+  padding: 0 40px 20px;
+  flex-shrink: 0;
+}
+.code-box {
+  background: #1c1c1c;
+  border: 1px solid #2e2e2e;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.code-box-head {
+  background: #252525;
+  border-bottom: 1px solid #333;
+  padding: 8px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.code-box-head .lang {
+  font-family: "Space Mono", monospace;
+  font-size: 9px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #888;
+}
+.code-box-head .copy-hint {
+  font-family: "Space Mono", monospace;
+  font-size: 9px;
+  color: var(--brand-dark);
+  background: var(--brand-tint);
+  padding: 2px 7px;
+  border-radius: 4px;
+  letter-spacing: .06em;
+}
+.code-body {
+  padding: 14px 16px;
+  font-family: "Space Mono", Courier, monospace;
+  font-size: 11px;
+  line-height: 1.75;
+  color: #c9d1d9;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+.c-tag  { color: #7ee787; }
+.c-attr { color: #d2a679; }
+.c-val  { color: #a5d6ff; }
+.c-txt  { color: #c9d1d9; }
+
+/* ── HINT ── */
+.hint-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin-top: 10px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+}
+.hint-icon {
+  flex: none;
+  width: 20px; height: 20px;
+  color: var(--brand-dark);
+  margin-top: 1px;
+}
+.hint-text {
+  font-size: 11.5px;
+  color: var(--muted);
+  line-height: 1.5;
+}
+.hint-text code {
+  font-family: "Space Mono", monospace;
+  font-size: 10.5px;
+  background: var(--paper-2);
+  border: 1px solid var(--line);
+  padding: 0 4px;
+  border-radius: 3px;
+  color: var(--ink-strong);
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--dark);
+  padding: 12px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  margin-top: auto;
+}
+.footer-left, .footer-right {
+  font-family: "Space Mono", monospace;
+  font-size: 9.5px;
+  color: #666;
+  letter-spacing: .06em;
+}
+.footer-right { text-align: right; font-size: 10px}
+.footer .brand { color: var(--brand); font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hd">
+  <div class="hd-left">
+    <div class="hd-eyebrow">Empfehlungssiegel</div>
+    <h1>Top Finanzierungsexperte</h1>
+    <div class="hd-sub">__NAME__</div>
+  </div>
+  <div class="hd-logo">
+    <img src="__LOGO_SRC__" alt="RegionalImmobilien24 – BauFinanzierung prime" />
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+  <div class="intro-icon">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+    </svg>
+  </div>
+  <div class="intro-text">
+    <strong>Ihr persönliches Qualitätssiegel</strong>
+    <p>Als zertifizierter Finanzierungsberater auf RegionalImmobilien24 dürfen Sie dieses Siegel auf Ihrer Website einbinden. Bei Klick gelangen Besucher direkt zu Ihrem Beraterprofil.</p>
+  </div>
+</div>
+
+<!-- CONTENT GRID -->
+<div class="content">
+
+  <!-- Siegel-Vorschau -->
+  <div class="preview-card">
+    <div class="preview-card-head">
+      <span class="tag">Vorschau</span>
+      <span class="dot"></span>
+    </div>
+    <div class="preview-inner">
+      <a href="__URL__" rel="follow" target="_blank">
+        <img src="https://www.regionalimmobilien24.de/ressource/img/siegel/top_finanzierungsexperte.svg"
+             alt="Top Finanzierungsexperte – __NAME__" />
+      </a>
+    </div>
+    <div class="preview-card-foot">
+      <div class="preview-url">
+        <strong>Verlinktes Profil</strong>
+        __URL__
+      </div>
+    </div>
+  </div>
+
+  <!-- Schritte -->
+  <div class="right">
+    <div class="section-label">So binden Sie das Siegel ein</div>
+    <div class="steps-group">
+      <div class="step-row">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <h3>Code kopieren</h3>
+          <p>Kopieren Sie den HTML-Code unten vollständig in die Zwischenablage.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <h3>In Ihre Website einfügen</h3>
+          <p>Fügen Sie den Code an der gewünschten Stelle im HTML Ihrer Seite ein – z.&nbsp;B. im Footer oder auf Ihrer Über-mich-Seite.</p>
+        </div>
+      </div>
+      <div class="step-row">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <h3>Fertig – Siegel erscheint sofort</h3>
+          <p>Das Bild wird direkt von unseren Servern geladen und ist stets aktuell. Kein Download nötig.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CODE -->
+<div class="code-section">
+  <div class="section-label">HTML-Code</div>
+  <div class="code-box">
+    <div class="code-box-head">
+      <span class="lang">HTML · direkt kopierbar</span>
+      <span class="copy-hint">Kopieren &amp; einfügen</span>
+    </div>
+    <div class="code-body">__CODE_HTML__</div>
+  </div>
+  <div class="hint-row">
+    <svg class="hint-icon" viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 8v4m0 4h.01" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+    </svg>
+    <div class="hint-text">
+      Größe anpassen über das <code>width</code>-Attribut, z.&nbsp;B. <code>width="150"</code> oder <code>width="250"</code>. Das Seitenverhältnis bleibt dabei automatisch erhalten.
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-left">
+    <span class="brand">RegionalImmobilien24</span>
+  </div>
+  <div class="footer-right">__NAME__</div>
+</div>
+
+</body>
+</html>

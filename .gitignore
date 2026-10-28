@@ -1,0 +1,4 @@
+aur-malware-check/
+__pycache__/
+*.pyc
+.venv/
